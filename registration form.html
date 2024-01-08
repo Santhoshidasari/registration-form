@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(156, 47, 47, 0.1);
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #647dc0;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #586caf;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5a59aa;
+        }
+        .error-message {
+            color: rgb(122, 93, 190);
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="registrationForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+        <button type="button" onclick="validateForm()">Register</button>
+        
+        <div id="error" class="error-message"></div>
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var errorElement = document.getElementById('error');
+            
+            // Basic validation
+            if (name === '' || email === '' || password === '' || confirmPassword === '') {
+                errorElement.textContent = 'All fields are required.';
+                return;
+            }
+
+            // Password matching validation
+            if (password !== confirmPassword) {
+                errorElement.textContent = 'Passwords do not match.';
+                return;
+            }
+
+            // Additional validation can be added as needed
+
+            // If all validations pass, you can submit the form or perform other actions
+            // For this example, let's display a success message
+            errorElement.textContent = 'Registration successful!';
+        }
+    </script>
+
+</body>
+</html>
